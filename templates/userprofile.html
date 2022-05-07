@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{username}}'s Profile Page
+{% endblock %}
+
+{% block main  %}
+<div style="display:flex;">
+    <div class="profileinfo">
+
+    <div>
+        {% if profile_pic %}
+            <img src="{{ url_for('static', filename='images/' + profile_pic) }}" width="350" height="350">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/defaultprofilepic.jpg') }}" width="350" height="350" >
+        {% endif %}
+
+    </div>
+    {% for i in info %}
+    <h1>{{i["username"]}}</h1>
+    <h4>{{i["firstname"]}} {{i["lastname"]}}</h4>
+    <h4></h4>
+    <h4>Age: {{i["age"]}}</h4>
+    <h4>Team: {{i["team"]}}</h4>
+    <h4>Position: {{i["position"]}}</h4>
+    {% endfor %}
+    </div>
+    <div class="settingsinfo">
+        {% for stat in stats %}
+        <table style="border: 2px solid; border-color: #7384D5; margin:auto; width:90%; table-layout: fixed; background-color:#03003E; padding-bottom:10px;">
+        <tr >
+         <th  class="white" style="border-right: 1px solid; border-color: #7384D5;">PPG</th>
+         <th  class="white" style="border-right: 1px solid; border-color: #7384D5;">APG</th>
+         <th  class="white">RPG</th>
+        </tr>
+        <tr>
+            <td class="white" style="border-right: 1px solid;  font-size:50px; border-color: #7384D5;">{{stat["PTS"]}}</td>
+            <td class="white" style="border-right: 1px solid ; font-size:50px; border-color: #7384D5;">{{stat["AST"]}}</td>
+            <td  class="white" style="border-right: 1px solid; font-size:50px; border-color: #7384D5;">{{stat["TRB"]}}</td>
+           </tr>
+        </table>
+        {% endfor %}
+        <br><br>
+        <div class="container rounded p-3 " style="width:30%; background-color:#E9E9E9">
+            <h1>Posts</h1>
+        </div>
+        <br>
+        <div class="container rounded p-3 " style="width:90%; background-color:#E9E9E9">
+
+            <div>
+                {% for post in posts %}
+                <br>
+                <div style="font-weight:bold;">{{post["time"]}}</div>
+                <div class="container rounded p-3 bg-light" style="width:60%; border: 2px solid; border-color: #7384D5;">
+
+                <br>
+                {{post["text"]}}
+                </div>
+                <br>
+                <hr style="width:75%; margin:auto;">
+                {% endfor %}
+            </div>
+
+
+
+        </div>
+        <br>
+        <div class="container rounded p-3 " style="width:30%; background-color:#E9E9E9">
+            <h1>Last 5 Games</h1>
+        </div>
+        <br>
+            <div>
+                <div class="container rounded p-3 " style="width:90%; background-color:#E9E9E9">
+                    {% for game in games %}
+
+                        <div id="datesize"> {{game["date"]}}</div>
+                        <h4 style="white-space: nowrap; padding:10px; ">{{game["team1"]}} <div id="scoretext">{{game["score1"]}}</div> <div id="scoretext">{{game["score2"]}}</div> {{game["team2"]}}</h4>
+                        <div style="white-space: nowrap; padding:10px;">
+                            <table style="border: 2px solid; border-color:black; margin:auto; width:100%; table-layout: fixed; ">
+                            <tr>
+                                <th style="border-right: 1px solid;">MP</th>
+                                <th style="border-right: 1px solid;">FGM</th>
+                                <th style="border-right: 1px solid;">FG%</th>
+                                <th style="border-right: 1px solid;">3PM</th>
+                                <th style="border-right: 1px solid;">3P%</th>
+                                <th style="border-right: 1px solid;">2PM</th>
+                                <th style="border-right: 1px solid;">2P%</th>
+                                <th style="border-right: 1px solid;">FTM</th>
+                                <th style="border-right: 1px solid;">FT%</th>
+                                <th class="bg-info" style="border-right: 1px solid;">AST</th>
+                                <th style="border-right: 1px solid;">STL</th>
+                                <th style="border-right: 1px solid;">BLK</th>
+                                <th class="bg-info" style="border-right: 1px solid;">TRB</th>
+                                <th style="border-right: 1px solid;">TOV</th>
+                                <th style="border-right: 1px solid;">PF</th>
+                                <th class="bg-info" style="border-right: 1px solid;">PTS</th>
+                            </tr>
+                            <tr>
+                                <th style="border-right: 1px solid;">{{game["MP"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["FG"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["FGPercent"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["THREEP"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["THREEPPercent"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["TWOP"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["TWOPPercent"]}}</th>
+                                <th style="border-right: 1px solid;" >{{game["FT"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["FTPercent"]}}</th>
+                                <th class="bg-info" style="border-right: 1px solid;">{{game["AST"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["STL"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["BLK"]}}</th>
+                                <th class="bg-info" style="border-right: 1px solid;">{{game["TRB"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["TOV"]}}</th>
+                                <th style="border-right: 1px solid;">{{game["PF"]}}</th>
+                                <th class="bg-info" style="border-right: 1px solid;">{{game["PTS"]}}</th>
+                            </tr>
+                            </table>
+                    </div>
+                    <hr style="width:50%; margin:auto;">
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+    </div>
+</div>
+{% endblock  %}

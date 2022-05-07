@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update Game Stats
+{% endblock %}
+
+{% block main  %}
+<div style="display:flex;">
+    <div class="profileinfo bg-">
+    <div id="profiletext"><a style="color:black" class="nav-link zoom" href="/information">Manage Information</a></div>
+    <div id="profiletext"><a style="color:black" class="nav-link zoom" href="/updategamestats">Update Game Stats</a></div>
+    </div>
+    <div class="settingsinfo">
+    {% for game in gameinfo  %}
+
+    <form action="/changestats" method="get">
+    <div id="datesize"> {{game["date"]}}</div>
+    <h4 style="white-space: nowrap; padding:10px; ">{{game["team1"]}} <div id="scoretext">{{game["score1"]}}</div> <div id="scoretext">{{game["score2"]}}</div> {{game["team2"]}}</h4>
+    <div style="white-space: nowrap; padding:10px;">
+        <table style="border: 2px solid; border-color:black; margin:auto; width:75%; table-layout: fixed; ">
+        <tr>
+            <th style="border-right: 1px solid;">MP</th>
+            <th style="border-right: 1px solid;">FGM</th>
+            <th style="border-right: 1px solid;">FGA</th>
+            <th style="border-right: 1px solid;">3PM</th>
+            <th style="border-right: 1px solid;">3PA</th>
+            <th style="border-right: 1px solid;">2PM</th>
+            <th style="border-right: 1px solid;">2PA</th>
+            <th style="border-right: 1px solid;">FTM</th>
+            <th style="border-right: 1px solid;">FTA</th>
+            <th style="border-right: 1px solid;">ORB</th>
+            <th style="border-right: 1px solid;">DRB</th>
+            <th style="border-right: 1px solid;">AST</th>
+            <th style="border-right: 1px solid;">STL</th>
+            <th style="border-right: 1px solid;">BLK</th>
+            <th style="border-right: 1px solid;">TOV</th>
+            <th style="border-right: 1px solid;">PF</th>
+            <th style="border-right: 1px solid;">PTS</th>
+        </tr>
+        <tr>
+            <th style="border-right: 1px solid;">{{game["MP"]}}</th>
+            <th style="border-right: 1px solid;">{{game["FG"]}}</th>
+            <th style="border-right: 1px solid;">{{game["FGA"]}}</th>
+            <th style="border-right: 1px solid;">{{game["THREEP"]}}</th>
+            <th style="border-right: 1px solid;">{{game["THREEPA"]}}</th>
+            <th style="border-right: 1px solid;">{{game["TWOP"]}}</th>
+            <th style="border-right: 1px solid;">{{game["TWOPA"]}}</th>
+            <th style="border-right: 1px solid;" >{{game["FT"]}}</th>
+            <th style="border-right: 1px solid;">{{game["FTA"]}}</th>
+            <th style="border-right: 1px solid;">{{game["ORB"]}}</th>
+            <th style="border-right: 1px solid;">{{game["DRB"]}}</th>
+            <th style="border-right: 1px solid;">{{game["AST"]}}</th>
+            <th style="border-right: 1px solid;">{{game["STL"]}}</th>
+            <th style="border-right: 1px solid;">{{game["BLK"]}}</th>
+            <th style="border-right: 1px solid;">{{game["TOV"]}}</th>
+            <th style="border-right: 1px solid;">{{game["PF"]}}</th>
+            <th style="border-right: 1px solid;">{{game["PTS"]}}</th>
+        </tr>
+        </table>
+    </div>
+    <button name="gameid" class="btn btn-primary" type="submit" value="{{game.id}}" >Select Game</button>
+
+
+    <hr style="width:50%; margin-left:25% !important; margin-right:25% !important;">
+    </form>
+    {% endfor  %}
+
+</div>
+{% endblock  %}
+

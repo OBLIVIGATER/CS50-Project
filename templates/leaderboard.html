@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Compare Stats
+{% endblock %}
+
+{% block main %}
+<div class="leaderboardimage">
+<style>
+  tr:nth-child(even)
+  {
+      background-color:#CDCDCD;
+  }
+</style>
+<div class="container" >
+  <br>
+<div  class="rounded p-3 " style="text-align:center; margin:auto; width:50%; background-color:#E9E9E9">
+    <h1 style="font-size:150px; filter:brightness(150%); color:black;">TOP 100</h1>
+</div>
+<br>
+<div style=" min-height:1000px; background-color:#BCEEFF" class="container rounded">
+    <div>
+      <br>
+        <form action="/leaderboard" method="get">
+
+            <label for="stats">Choose a Stat:</label>
+            <select class="btn btn-secondary dropdown-toggle" name="stat">
+              <optgroup label="Total Stats">
+                <option name="G" value="G">Games Played</option>
+                <option value="GS">Games Started</option>
+                <option value="MP">Minutes Played</option>
+                <option value="FG">Field Goals Made</option>
+                <option value="FGA">Field Goal Attempts</option>
+                <option value="THREEP">Three Points Made</option>
+                <option value="THREEPA">Three Points Attempted</option>
+                <option value="TWOP">Two Points Made</option>
+                <option value="TWOPA">Two Points Attempted</option>
+                <option value="FT">Free Throws Made</option>
+                <option value="FTA">Free Throw Attempts</option>
+                <option value="ORB">Offensive Rebounds</option>
+                <option value="DRB">Defensive Rebounds</option>
+                <option value="TRB">Total Rebounds</option>
+                <option value="AST">Assists</option>
+                <option value="STL">Steals</option>
+                <option value="BLK">Blocks</option>
+                <option value="TOV">Turnovers</option>
+                <option value="PF">Personal Fouls</option>
+                <option value="PTS">Points</option>
+              </optgroup>
+              <optgroup label="Average Stats per Game">
+
+                <option value="MPx">Minutes Played</option>
+                <option value="FGx">Field Goals Made</option>
+                <option value="FGx">Field Goal Attempts</option>
+                <option value="THREEPx">Three Points Made</option>
+                <option value="THREEPAx">Three Points Attempted</option>
+                <option value="TWOPx">Two Points Made</option>
+                <option value="TWOPAx">Two Points Attempted</option>
+                <option value="FTx">Free Throws Made</option>
+                <option value="FTAx">Free Throw Attempts</option>
+                <option value="ORBx">Offensive Rebounds</option>
+                <option value="DRBx">Defensive Rebounds</option>
+                <option value="TRBx">Total Rebounds</option>
+                <option value="ASTx">Assists</option>
+                <option value="STLx">Steals</option>
+                <option value="BLKx">Blocks</option>
+                <option value="TOVx">Turnovers</option>
+                <option value="PFx">Personal Fouls</option>
+                <option value="PTSx">Points</option>
+              </optgroup>
+              <optgroup label="Percentages">
+                <option value="FGPercent">FG%</option>
+                <option value="THREEPPercent">3P%</option>
+                <option value="TWOPPercent">2P%</option>
+                <option value="FTPercent">FT%</option>
+                <option value="eFGPercent">eFG%</option>
+              </optgroup>
+            </select>
+            <br><br>
+            <input  class="btn btn-primary"  type="submit" value="Show Leaderboard">
+          </form>
+          <br>
+    </div>
+
+<table style=" border: 2px solid; width:90%; margin:auto; table-layout: fixed;">
+    <tr>
+    <th style="border: 2px solid;">Rank</th>
+    <th style="border: 2px solid;">Username</th>
+    <th style="border: 2px solid;">Games Played</th>
+    <th style="border: 2px solid;">{{sname}}</th>
+    </tr>
+        {% for stat in stats %}
+
+            <tr>
+                <td style="border: 2px solid;">{{loop.index}}</td>
+                <td style="border: 2px solid;">{{stat["name"]}}</td>
+                <td style="border: 2px solid;">{{stat["G"]}}</td>
+                <td style="border: 2px solid;">{{stat["num"]}}</td>
+
+            </tr>
+
+        {% endfor %}
+
+
+</table>
+<br>
+</div>
+</div>
+
+
+</div>
+{% endblock %}

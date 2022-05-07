@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block main %}
+<div class="indexpic">
+    <div class="textbox">
+        <h1 style="font-size:100px; filter: brightness(150%);">Basketball Stats</h1>
+        <h1 style="font-size:25px; filter: brightness(150%);">Welcome to my CS50 Final Project </h1>
+        <h1 style="font-size:50px; text-align:left; padding-top:200px; filter: brightness(150%); text-decoration: underline;">About:</h1>
+        <h1 style="font-size:25px; text-align:left; filter: brightness(150%);">
+            My name is Adam I am from London,UK. This is my final project and I decided to use a similar Layout from Week 9 flask.
+            This web application is used to input your game stats and then compare your stats with friends, other users and NBA Players from the
+            2020/21 Season. You also have your own Profile page where you can post your thoughts like a social media page and then using the
+            search bar you can find your friends profile pages to look at too. As you can see some pages have better UI and UX. I decided to
+            leave it like this to show my development over time. The first page I created was "Add Games" and the last one was "Leaderboards",
+            and you can clearly see the difference!</h1>
+            <h1 style="font-size:50px; padding-top:20px; filter: brightness(150%); text-decoration: underline;">Instructions</h1>
+            <ol style="font-size:25px; text-align:left;  filter: brightness(150%);">
+                <li >
+                    Click "Addgames" in the Navigation bar. Input your stats from the games that you play.
+                     If you make a mistake or need to change your stats visit "Settings" and click "Updategames" then find the game you want to amend.</li>
+                <li >
+                    Make sure you Visit the "Information" page in"Settings" page to input your Age, Position and Team.
+                    If you want to update your profile picture you can also change is there too!
+                </li>
+                <li >
+                    After this you will then be able to compare your stats with friends and Check out their profile pages.
+                    Make sure to post updates about your season on your Profilepage.
+                </li>
+            </ol>
+            <h1 style="font-size:100px; filter: brightness(150%);">ENJOY!</h1>
+            <h1 style="font-size:50px; padding-top:20px; filter: brightness(150%); text-decoration: underline;">Development points</h1>
+            <ol style="font-size:25px; text-align:left;  filter: brightness(150%);">
+                <li >
+                    Use an API so stats are more up to date. </li>
+                <li >
+                    Improve website by making it more interactive using Javascript and look nicer by using more CSS.
+                </li>
+                <li >
+                    Change the layout so it works on smaller screens or when the sceen is smaller.
+
+                </li>
+                <li >
+                    Change the database so that when inputing/updating stats, it doesnt take a long time. By maybe getting rid of pergamestats and totalstats tables
+
+                </li>
+            </ol>
+    </div>
+
+</div>
+
+
+{% endblock %}

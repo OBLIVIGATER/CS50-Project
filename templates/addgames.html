@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Games
+    <head >
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+{% endblock %}
+
+{% block main %}
+    <div class="container bg-light">
+        <h1 class="display-1">ADD GAMES</h1>
+        <h4>Input game data so your stats can be tracked.</h4>
+        <hr>
+        <h5 class="h5">Date</h5>
+        <form action="/addgames" method="post">
+        <div>
+            <div class="mb-3 team1">
+                    <input autocomplete="off" autofocus class="form-control" id="team1" name="team1" placeholder="Home Team" type="text" value="{{team1}}">
+            </div>
+            <div class="mb-3 team2">
+                    <input autocomplete="off" autofocus class="form-control mx-auto w-auto " id="team2" name="team2" placeholder="Away Team" type="text" value="{{team2}}">
+            </div>
+
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="date" name="date" placeholder="Date" type="date" value="{{date}}">
+            </div>
+
+            <div class="mb-3 team2">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto " id="score2" name="score2" placeholder="Away Score" type="number" value="{{score2}}">
+            </div>
+            <div class="mb-3 team1">
+                <input autocomplete="off" autofocus class="form-control" id="score1" name="score1" placeholder="Home Score" type="number" value="{{score1}}">
+            </div>
+            <br><br>
+        </div>
+        <hr>
+        <h4>Stats</h4>
+        <div>
+            Did you start the match? <select name="gs" id="gs" required>
+                <option value="">--Select--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+                <br><br>
+            <div class="mb-3 team12">
+                <input autocomplete="off" autofocus class="form-control w-auto" id="mp" name="mp" placeholder="Minutes Played" type="number" value="{{mp}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="stl" name="stl" placeholder="Steals" type="number" value="{{stl}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="tov" name="tov" placeholder="Turnovers" type="number" value="{{tov}}"><br>
+
+                <input autocomplete="off" autofocus class="form-control w-auto" id="3pa" name="threepa" placeholder="3 Points Attempted" type="number" value="{{threepa}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="twopa" name="twopa" placeholder="2 Points Attempted" type="number" value="{{twopa}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="fta" name="fta" placeholder="Free Throw Attempts" type="number" value="{{fta}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="orb" name="orb" placeholder="Offensive Rebounds" type="number" value="{{orb}}"><br>
+            </div>
+            <div class=" mb-3 team22">
+                <input autocomplete="off" autofocus class="form-control w-auto" id="ast" name="ast" placeholder="Assists" type="number" value="{{ast}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="blk" name="blk" placeholder="Blocks" type="number" value="{{blk}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="pf" name="pf" placeholder="Personal Fouls" type="number" value="{{pf}}"><br>
+
+                <input autocomplete="off" autofocus class="form-control w-auto" id="3p" name="threep" placeholder="3 Points Made" type="number" value="{{threep}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="twop" name="twop" placeholder="2 Points Made" type="number" value="{{twop}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="ft" name="ft" placeholder="Free Throws Made" type="number" value="{{ft}}"><br>
+                <input autocomplete="off" autofocus class="form-control w-auto" id="drb" name="drb" placeholder="Defensive Rebounds" type="number" value="{{drb}}"><br>
+            </div>
+        </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        {% if error %}<br>
+        <p class="error"><strong>Error:</strong> {{ error }} </p>
+        {% endif %}
+        <button class="btn btn-primary" type="submit">Submit Game</button>
+
+        <hr>
+        </form>
+    </div>
+
+
+{% endblock %}

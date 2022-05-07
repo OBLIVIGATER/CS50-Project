@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Changestats
+{% endblock %}
+
+{% block main  %}
+    <div class="profileinfo bg-">
+    <div id="profiletext"><a style="color:black" class="nav-link zoom" href="/information">Manage Information</a></div>
+    <div id="profiletext"><a style="color:black" class="nav-link zoom" href="/updategamestats">Update Game Stats</a></div>
+    </div>
+    <div class="settingsinfo">
+
+    {% for game in gameinfo  %}
+    <form method="post">
+    <div id="datesize"> <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="date" name="date" placeholder="Date" type="date" value="{{game.date}}"><div>
+    <h4 style="white-space: nowrap; padding:10px; "><input autocomplete="off" autofocus class="form-control-sm" id="team1" name="team1" placeholder="Home Team" type="text" value="{{game.team1}}"> <input autocomplete="off" autofocus class="form-control-sm" id="score1" name="score1" placeholder="Home Score" type="number" value="{{game.score1}}"> V <input autocomplete="off" autofocus class="form-control-sm mx-auto w-auto " id="score2" name="score2" placeholder="Away Score" type="number" value="{{game.score2}}"> <input autocomplete="off" autofocus class="form-control-sm mx-auto w-auto " id="team2" name="team2" placeholder="Away Team" type="text" value="{{game.team2}}"></h4>
+    <div>
+
+        {% if gamestart == '1' %}
+        Did you start the match?<select name="gs" id="gs" value="{{game.GS}}">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        {% elif gamestart == '0' %}
+        Did you start the match?<select name="gs" id="gs" value="{{game.GS}}">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        {% endif %}
+
+    <div>
+
+    <div  class="container borderright ms-auto mt-2" id="col">
+        <div style="white-space: nowrap; padding:10px;">
+            <table style="margin: 0 auto;">
+                <tr><td class="padin">Minutes Played: </td><td class="padin" ><input autocomplete="off" autofocus class="form-control-sm w-auto" id="mp" name="mp" placeholder="Minutes Played" type="number" value="{{game.MP}}"></td></tr>
+                <tr><td class="padin">Steals: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="stl" name="stl" placeholder="Steals" type="number" value="{{game.STL}}"></td></tr>
+                <tr><td class="padin">Turnovers: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="tov" name="tov" placeholder="Turnovers" type="number" value="{{game.TOV}}"></td></tr>
+                <tr><td class="padin">Field Goals: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="fg" name="fg" placeholder="Field Goals" type="number" value="{{game.FG}}"></td></tr>
+                <tr><td class="padin">Three Points: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="3p" name="threep" placeholder="3 Points Made" type="number" value="{{game.THREEP}}"></td></tr>
+                <tr><td class="padin">Two Points: </td><td class="padin"> <input autocomplete="off" autofocus class="form-control-sm w-auto" id="twop" name="twop" placeholder="2 Points Made" type="number" value="{{game.TWOP}}"></td></tr>
+                <tr><td class="padin">Free Throws: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="ft" name="ft" placeholder="Free Throws Made" type="number" value="{{game.FT}}"></td></tr>
+                <tr><td class="padin">Offensive Rebounds: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="orb" name="orb" placeholder="Offensive Rebounds" type="number" value="{{game.ORB}}"></td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="container borderleft ms-auto mt-2" id="col">
+        <div style="white-space: nowrap; padding:10px;">
+            <table style="margin: 0 auto;">
+            <tr><td class="padin"> Assists: </td><td class="padin" ><input autocomplete="off" autofocus class="form-control-sm w-auto" id="ast" name="ast" placeholder="Assists" type="number" value="{{game.AST}}"></td></tr>
+            <tr><td class="padin"> Blocks: </td><td class="padin" ><input autocomplete="off" autofocus class="form-control-sm w-auto" id="blk" name="blk" placeholder="Blocks" type="number" value="{{game.BLK}}"></td></tr>
+            <tr><td class="padin">Personal Fouls: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="pf" name="pf" placeholder="Personal Fouls" type="number" value="{{game.PF}}"></td></tr>
+            <tr><td class="padin">Field Goal Attempts: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="fga" name="fga" placeholder="Field Goal Attempts" type="number" value="{{game.FGA}}"></td></tr>
+            <tr><td class="padin">Three Point Attempts:</td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="3pa" name="threepa" placeholder="3 Points Attempted" type="number" value="{{game.THREEPA}}"></td></tr>
+            <tr><td class="padin">Two Point Attempt: </td><td class="padin"> <input autocomplete="off" autofocus class="form-control-sm w-auto" id="twopa" name="twopa" placeholder="2 Points Attempted" type="number" value="{{game.TWOPA}}"></td></tr>
+            <tr><td class="padin">Free Throw Attempt: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="fta" name="fta" placeholder="Free Throw Attempts" type="number" value="{{game.FTA}}"></td></tr>
+            <tr><td class="padin">Defensive Rebounds: </td><td class="padin"><input autocomplete="off" autofocus class="form-control-sm w-auto" id="drb" name="drb" placeholder="Defensive Rebounds" type="number" value="{{game.DRB}}"></td></tr>
+        </table>
+        </div>
+    </div>
+    <div style="display: grid; text-align: center; " class="container ms-auto mt-2">
+        <div style="padding-top:50px; padding-bottom:50px; display:inline-block padding-bottom:50px; "class="padin">PTS: <input autocomplete="off" autofocus class="form-control-sm w-auto "  id="pts" name="pts" placeholder="Points" type="number" value="{{game.PTS}}"></div>
+        <button style="width:150px;  margin:auto; display:block;" name="updategame" class="btn btn-primary" type="submit" value="{{game.id}}" >Update Game</button>
+    </div>
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }} </p>
+    {% endif %}
+    <br>
+    <button style="width:150px;  margin:auto; display:block;" name="deletegame" class="btn btn-primary" type="submit" value="{{game.id}}" >Delete Game</button>
+    </form>
+
+
+    {% endfor  %}
+<div>
+{% endblock  %}

@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Compare Stats with Nba
+{% endblock %}
+
+{% block main  %}
+<div id="primary" style="background-color:powderblue";>
+
+</div>
+
+<div class ="bg-light" id="content">
+    <h1 class="display-1">Compare Stats</h1>
+    <hr>
+        <div class="container  ms-auto mt-2">
+            <h4 id="col"><a  style="color:black" class="nav-link zoom" href="/comparenba">Compare with NBA player</a></h4>
+            <h4 id="col"><a style="color:black" class="nav-link zoom" href="/compareuser">Compare with a user</a></h4>
+        </div>
+
+
+
+    <div>
+            <form action="/compareuser" method="post">
+                        <input id="searchwidth" class="form-control" autocomplete="on" autofocus name="username" placeholder="Username" type="text">
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Select">
+            </form>
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }} </p>
+        {% endif %}
+    </div>
+        <hr>
+    <div  class="container borderright ms-auto mt-2" id="col">
+                <h2>{{username}}'s Stats</h2>
+
+                {% for stat in stats %}
+                <h4 class="padin" >Games Played: {{stat["G"]}}</h4><hr>
+                <h4 class="padin">Games Started: {{stat["GS"]}}</h4><hr>
+                <h4 class="padin">Minutes Played: {{stat["ROUND(MP,1)"]}}</h4><hr>
+                <h4 class="padin">Field Goals Made: {{stat["ROUND(FG,1)"]}}</h4><hr>
+                <h4 class="padin">Field Goal Attempts: {{stat["ROUND(FGA,1)"]}}</h4><hr>
+                <h4 class="padin">Field Goal %: {{stat["ROUND(FGPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Three Points Made: {{stat["ROUND(THREEP,1)"]}}</h4><hr>
+                <h4 class="padin">Three Point Attempts: {{stat["ROUND(THREEPA,1)"]}}</h4><hr>
+                <h4 class="padin">Three Point %: {{stat["ROUND(THREEPPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Two Points Made: {{stat["ROUND(TWOP,1)"]}}</h4><hr>
+                <h4 class="padin">Two Point Attempts: {{stat["ROUND(TWOPA,1)"]}}</h4><hr>
+                <h4 class="padin">Two Point %: {{stat["ROUND(TWOPPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Effective Field Goal %: {{stat["ROUND(eFGPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Free Throws Made: {{stat["ROUND(FT,1)"]}}</h4><hr>
+                <h4 class="padin">Free Throw Attempts: {{stat["ROUND(FTA,1)"]}}</h4><hr>
+                <h4 class="padin">Free Throw %: {{stat["ROUND(FTPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Offensive Rebounds: {{stat["ROUND(ORB,1)"]}}</h4><hr>
+                <h4 class="padin">Defensive Rebounds: {{stat["ROUND(DRB,1)"]}}</h4><hr>
+                <h4 class="padin">Total Rebounds: {{stat["ROUND(TRB,1)"]}}</h4><hr>
+                <h4 class="padin">Assists: {{stat["ROUND(AST,1)"]}}</h4><hr>
+                <h4 class="padin">Steals: {{stat["ROUND(STL,1)"]}}</h4><hr>
+                <h4 class="padin">Blocks: {{stat["ROUND(BLK,1)"]}}</h4><hr>
+                <h4 class="padin">Turnovers: {{stat["ROUND(TOV,1)"]}}</h4><hr>
+                <h4 class="padin">Personal Fouls: {{stat["ROUND(PF,1)"]}}</h4><hr>
+                <h4 class="padin">Pts: {{stat["ROUND(PTS,1)"]}}</h4>
+                {% endfor %}
+        </div>
+        <div class="container borderleft ms-auto mt-2" id="col">
+
+                <h2>{{name}}'s Stats</h2>
+                {% for stat in player_stats %}
+                <h4 class="padin" >Games Played: {{stat["G"]}}</h4><hr>
+                <h4 class="padin">Games Started: {{stat["GS"]}}</h4><hr>
+                <h4 class="padin">Minutes Played: {{stat["ROUND(MP,1)"]}}</h4><hr>
+                <h4 class="padin">Field Goals: {{stat["ROUND(FG,1)"]}}</h4><hr>
+                <h4 class="padin">Field Goal Attempts: {{stat["ROUND(FGA,1)"]}}</h4><hr>
+                <h4 class="padin">Field Goal %: {{stat["ROUND(FGPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Three Points: {{stat["ROUND(THREEP,1)"]}}</h4><hr>
+                <h4 class="padin">Three Point Attempts: {{stat["ROUND(THREEPA,1)"]}}</h4><hr>
+                <h4 class="padin">Three Point %: {{stat["ROUND(THREEPPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Two Points: {{stat["ROUND(TWOP,1)"]}}</h4><hr>
+                <h4 class="padin">Two Point Attempts: {{stat["ROUND(TWOPA,1)"]}}</h4><hr>
+                <h4 class="padin">Two Point %: {{stat["ROUND(TWOPPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Effective Field Goal %: {{stat["ROUND(eFGPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Free Throws: {{stat["ROUND(FT,1)"]}}</h4><hr>
+                <h4 class="padin">Free Throw Attempts: {{stat["ROUND(FTA,1)"]}}</h4><hr>
+                <h4 class="padin">Free Throw %: {{stat["ROUND(FTPercent,1)"]}}</h4><hr>
+                <h4 class="padin">Offensive Rebounds: {{stat["ROUND(ORB,1)"]}}</h4><hr>
+                <h4 class="padin">Defensive Rebounds: {{stat["ROUND(DRB,1)"]}}</h4><hr>
+                <h4 class="padin">Total Rebounds: {{stat["ROUND(TRB,1)"]}}</h4><hr>
+                <h4 class="padin">Assists: {{stat["ROUND(AST,1)"]}}</h4><hr>
+                <h4 class="padin">Steals: {{stat["ROUND(STL,1)"]}}</h4><hr>
+                <h4 class="padin">Blocks: {{stat["ROUND(BLK,1)"]}}</h4><hr>
+                <h4 class="padin">Turnovers: {{stat["ROUND(TOV,1)"]}}</h4><hr>
+                <h4 class="padin">Personal Fouls: {{stat["ROUND(PF,1)"]}}</h4><hr>
+                <h4 class="padin">Pts: {{stat["ROUND(PTS,1)"]}}</h4>
+                {% endfor %}<br>
+        </div>
+</div>
+
+<div id="secondary" style="background-color:powderblue";>
+</div>
+
+{% endblock  %}

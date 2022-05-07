@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main  %}
+
+<div id="primary" style="background-color:powderblue";>
+
+</div>
+<div class ="bg-light" id="content">
+    {% if error %}
+    <div style="margin:auto; padding-top:150px;">
+
+        <div class="alert alert-danger" role="alert" style="font-size:100px;">{{attention}}</div>
+        <hr style="margin:auto;" width="50%">
+        <div style="font-size:50px;">{{error}}</div>
+        <div style="font-size:50px; display:inline-block;">{{tryagain}}</div>
+
+    </div>
+    {% endif %}
+    <br><br>
+
+    {% for stat in stats %}
+    <div class="container rounded p-3 bg-info" style="width:60%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; display:flex;">
+        <div class="profilepichold bg-info">
+            {% if stat["picture"] %}
+            <img src="{{ url_for('static', filename='images/' + stat.picture) }}" width="200" height="200">
+            {% else %}
+            <img src="{{ url_for('static', filename='images/defaultprofilepic.jpg') }}" width="200" height="200" >
+            {% endif %}
+        </div>
+        <div style="font-size:20px; display:inline-block; text-align:left;  float:left;">
+            <div style=" padding-top:7px;">{{stat["username"]}}</div>
+            <div style=" padding-top:7px;" >{{stat["firstname"]}} {{stat["lastname"]}}</div>
+            <div style=" padding-top:7px;">{{stat["age"]}}</div>
+            <div style=" padding-top:7px;">{{stat["team"]}}</div>
+            <div style="padding-top:7px;">{{stat["position"]}}</div>
+
+        </div>
+
+        <div style=" margin:auto; width:50%; float:left;" >
+
+            <table style=" padding:20px; border: 2px solid; border-color: #7384D5; margin:auto; width:90%; table-layout: fixed; background-color:#03003E; padding-bottom:10px;">
+                <tr >
+                 <th  class="white" style="border-right: 1px solid; border-color: #7384D5;">PPG</th>
+                 <th  class="white" style="border-right: 1px solid; border-color: #7384D5;">APG</th>
+                 <th  class="white">RPG</th>
+                </tr>
+                <tr>
+                    <td class="white" style="border-right: 1px solid;  font-size:50px; border-color: #7384D5;">{{stat["PTS"]}}</td>
+                    <td class="white" style="border-right: 1px solid ; font-size:50px; border-color: #7384D5;">{{stat["AST"]}}</td>
+                    <td  class="white" style="border-right: 1px solid; font-size:50px; border-color: #7384D5;">{{stat["TRB"]}}</td>
+                </tr>
+                </table>
+                <form action="/userprofile" method="get">
+                <div style="padding-top:30px;"><button name="userid" class="btn btn-primary" type="submit" value="{{stat.pergame_user_id}}">See Profile</button>
+                </form>
+                </div>
+
+
+        </div>
+
+    </div>
+    <br><br>
+    {% endfor %}
+</div>
+    <div id="secondary" style="background-color:powderblue";>
+    </div>
+
+{% endblock  %}

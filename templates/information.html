@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+     Manage Information
+{% endblock %}
+
+{% block main  %}
+    <div class="profileinfo bg-">
+    <div id="profiletext"><a style="color:black" class="nav-link zoom" href="/information">Manage Information</a></div>
+    <div id="profiletext"><a style="color:black" class="nav-link zoom" href="/updategamestats">Update Game Stats</a></div>
+    </div>
+    <div class="settingsinfo">
+        <form   method="post" enctype="multipart/form-data">
+            {% for i in info  %}
+            <table style="margin:auto;">
+                <tr><td class="padin"> Age </td><td class="padin" ><input autocomplete="off" autofocus class="form-control-sm w-auto" name="age" placeholder="Age" type="number" value="{{i.age}}"></td>
+                <td class="padin"> Team </td><td class="padin" ><input autocomplete="off" autofocus class="form-control-sm w-auto"  name="team" placeholder="Team"  value="{{i.team}}"></td></tr>
+            </table>
+            {% endfor  %}
+            <div style="padding:30px;">
+                {% if position == 'Point Guard' %}
+                <select  name="position">
+                    <option value="Point Guard">Point Guard</option>
+                    <option value="Shooting Guard">Shooting Guard</option>
+                    <option value="Small Forward">Small Forward</option>
+                    <option value="Power Forward">Power Forward</option>
+                    <option value="Center">Center</option>
+                </select>
+                {% elif position == 'Shooting Guard' %}
+                <select  name="position">
+                    <option value="Shooting Guard">Shooting Guard</option>
+                    <option value="Point Guard">Point Guard</option>
+                    <option value="Small Forward">Small Forward</option>
+                    <option value="Power Forward">Power Forward</option>
+                    <option value="Center">Center</option>
+                </select>
+                {% elif position == 'Power Forward' %}
+                <select  name="position">
+                    <option value="Power Forward">Power Forward</option>
+                    <option value="Point Guard">Point Guard</option>
+                    <option value="Shooting Guard">Shooting Guard</option>
+                    <option value="Small Forward">Small Forward</option>
+                    <option value="Center">Center</option>
+                </select>
+                {% elif position == 'Small Forward' %}
+                <select  name="position">
+                    <option value="Small Forward">Small Forward</option>
+                    <option value="Point Guard">Point Guard</option>
+                    <option value="Shooting Guard">Shooting Guard</option>
+                    <option value="Power Forward">Power Forward</option>
+                    <option value="Center">Center</option>
+                </select>
+                {% elif position == 'Center' %}
+                <select  name="position">
+                    <option value="Center">Center</option>
+                    <option value="Point Guard">Point Guard</option>
+                    <option value="Shooting Guard">Shooting Guard</option>
+                    <option value="Small Forward">Small Forward</option>
+                    <option value="Power Forward">Power Forward</option>
+                </select>
+                {% else %}
+                <select  name="position">
+                    <option value="Point Guard">Point Guard</option>
+                    <option value="Shooting Guard">Shooting Guard</option>
+                    <option value="Small Forward">Small Forward</option>
+                    <option value="Power Forward">Power Forward</option>
+                    <option value="Center">Center</option>
+                </select>
+                {% endif %}
+            </div>
+
+            <label>Upload a profile picture:<input type="file" name="file" style=" padding:30px "></label>
+
+            <button style="width:150px;  margin:auto; display:block;" name="uploadinfo" class="btn btn-primary" type="submit">Update</button>
+        </form>
+
+        <br>
+        {{error}}
+    </div>
+
+{% endblock  %}

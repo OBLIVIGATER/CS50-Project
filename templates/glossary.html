@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Glossary
+{% endblock %}
+
+{% block main  %}
+<style>
+    tr:nth-child(even)
+    {
+        color:#6B6B6B;
+    }
+</style>
+<div id="primary" style="background-color:powderblue";>
+
+</div>
+<div class ="bg-light" id="content">
+    <br>
+     <table style="margin:auto; table-layout:fixed; text-align:left;" >
+     {% for a in acroynm %}
+    <tr><td style=" text-align:right; font-weight:bold; font-size:25px">{{a["Acroynm"]}}</td> <td style="padding:5px;"> - </td> <td> {{a["Meaning"]}}</td></tr>
+    {% endfor %}
+
+</table>
+<br>
+</div>
+    <div id="secondary" style="background-color:powderblue";>
+    </div>
+{% endblock  %}
